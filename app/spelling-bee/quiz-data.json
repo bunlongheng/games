@@ -1,0 +1,238 @@
+{
+	"quizTitle": "Norden's Super Spelling Adventure! 🌟",
+	"categories": [
+		{
+			"id": 1,
+			"name": "Animals",
+			"color": "#FF3B30",
+			"emoji": "🐾",
+			"words": [
+				{ "word": "cat", "hint": "A furry pet that says meow", "image": "🐱" },
+				{ "word": "dog", "hint": "A furry friend that barks", "image": "🐶" },
+				{ "word": "fish", "hint": "It swims in water", "image": "🐟" },
+				{ "word": "bird", "hint": "It flies in the sky", "image": "🐦" },
+				{ "word": "frog", "hint": "Green and jumps, says ribbit", "image": "🐸" },
+				{ "word": "bee", "hint": "Makes honey and buzzes", "image": "🐝" },
+				{ "word": "pig", "hint": "Pink animal that says oink", "image": "🐷" },
+				{ "word": "cow", "hint": "Says moo and gives milk", "image": "🐮" },
+				{ "word": "duck", "hint": "Yellow bird that quacks", "image": "🦆" },
+				{ "word": "lion", "hint": "King of the jungle", "image": "🦁" }
+			]
+		},
+		{
+			"id": 2,
+			"name": "Food",
+			"color": "#FF9500",
+			"emoji": "🍎",
+			"words": [
+				{ "word": "apple", "hint": "Red or green fruit", "image": "🍎" },
+				{ "word": "cake", "hint": "Sweet treat for birthdays", "image": "🎂" },
+				{ "word": "egg", "hint": "Chickens lay these", "image": "🥚" },
+				{ "word": "pizza", "hint": "Round food with cheese", "image": "🍕" },
+				{ "word": "bread", "hint": "You make sandwiches with it", "image": "🍞" },
+				{ "word": "milk", "hint": "White drink from cows", "image": "🥛" },
+				{ "word": "rice", "hint": "Small white grains", "image": "🍚" },
+				{ "word": "corn", "hint": "Yellow vegetable on a cob", "image": "🌽" },
+				{ "word": "meat", "hint": "Comes from animals", "image": "🥩" },
+				{ "word": "soup", "hint": "Hot liquid food in a bowl", "image": "🍲" }
+			]
+		},
+		{
+			"id": 3,
+			"name": "Colors",
+			"color": "#D4E157",
+			"emoji": "🎨",
+			"words": [
+				{ "word": "red", "hint": "Color of a stop sign", "image": "🔴" },
+				{ "word": "blue", "hint": "Color of the sky", "image": "🔵" },
+				{ "word": "green", "hint": "Color of grass", "image": "🟢" },
+				{ "word": "pink", "hint": "Light red color", "image": "🩷" },
+				{ "word": "black", "hint": "Darkest color", "image": "⚫" },
+				{ "word": "white", "hint": "Color of snow", "image": "⚪" },
+				{ "word": "brown", "hint": "Color of chocolate", "image": "🟤" },
+				{ "word": "gray", "hint": "Between black and white", "image": "⚪" },
+				{ "word": "gold", "hint": "Shiny yellow color", "image": "🟡" },
+				{ "word": "tan", "hint": "Light brown color", "image": "🟤" }
+			]
+		},
+		{
+			"id": 4,
+			"name": "Body Parts",
+			"color": "#00C7BE",
+			"emoji": "👋",
+			"words": [
+				{ "word": "hand", "hint": "You use it to wave", "image": "✋" },
+				{ "word": "foot", "hint": "You walk with it", "image": "🦶" },
+				{ "word": "ear", "hint": "You hear with it", "image": "👂" },
+				{ "word": "eye", "hint": "You see with it", "image": "👁️" },
+				{ "word": "nose", "hint": "You smell with it", "image": "👃" },
+				{ "word": "arm", "hint": "Between hand and shoulder", "image": "💪" },
+				{ "word": "leg", "hint": "You stand on it", "image": "🦵" },
+				{ "word": "knee", "hint": "Middle of your leg", "image": "🦵" },
+				{ "word": "toe", "hint": "On your foot", "image": "🦶" },
+				{ "word": "chin", "hint": "Below your mouth", "image": "😊" }
+			]
+		},
+		{
+			"id": 5,
+			"name": "Family",
+			"color": "#FF2D55",
+			"emoji": "👨‍👩‍👦",
+			"words": [
+				{ "word": "mom", "hint": "Your mother", "image": "👩" },
+				{ "word": "dad", "hint": "Your father", "image": "👨" },
+				{ "word": "baby", "hint": "Very young child", "image": "👶" },
+				{ "word": "aunt", "hint": "Your parent's sister", "image": "👩" },
+				{ "word": "uncle", "hint": "Your parent's brother", "image": "👨" },
+				{ "word": "son", "hint": "A boy child", "image": "👦" },
+				{ "word": "kid", "hint": "A young person", "image": "🧒" },
+				{ "word": "papa", "hint": "Another word for dad", "image": "👨" },
+				{ "word": "mama", "hint": "Another word for mom", "image": "👩" },
+				{ "word": "nana", "hint": "Another word for grandma", "image": "👵" }
+			]
+		},
+		{
+			"id": 6,
+			"name": "Transportation",
+			"color": "#007AFF",
+			"emoji": "🚗",
+			"words": [
+				{ "word": "car", "hint": "You drive on the road", "image": "🚗" },
+				{ "word": "bus", "hint": "Big vehicle for many people", "image": "🚌" },
+				{ "word": "train", "hint": "Rides on tracks", "image": "🚂" },
+				{ "word": "plane", "hint": "Flies in the sky", "image": "✈️" },
+				{ "word": "boat", "hint": "Floats on water", "image": "⛵" },
+				{ "word": "bike", "hint": "Two wheels, you pedal", "image": "🚲" },
+				{ "word": "truck", "hint": "Big car that carries things", "image": "🚚" },
+				{ "word": "ship", "hint": "Big boat on the ocean", "image": "🚢" },
+				{ "word": "van", "hint": "Like a car but bigger", "image": "🚐" },
+				{ "word": "jet", "hint": "Fast airplane", "image": "✈️" }
+			]
+		},
+		{
+			"id": 7,
+			"name": "Nature",
+			"color": "#34C759",
+			"emoji": "🌳",
+			"words": [
+				{ "word": "tree", "hint": "Tall plant with leaves", "image": "🌳" },
+				{ "word": "sun", "hint": "Bright star in the sky", "image": "☀️" },
+				{ "word": "moon", "hint": "You see it at night", "image": "🌙" },
+				{ "word": "star", "hint": "Twinkles in the night sky", "image": "⭐" },
+				{ "word": "rain", "hint": "Water falling from clouds", "image": "🌧️" },
+				{ "word": "wind", "hint": "Moving air", "image": "💨" },
+				{ "word": "snow", "hint": "White and cold, falls in winter", "image": "❄️" },
+				{ "word": "leaf", "hint": "Green part of a tree", "image": "🍃" },
+				{ "word": "rock", "hint": "Hard thing from the ground", "image": "🪨" },
+				{ "word": "sand", "hint": "Tiny rocks at the beach", "image": "🏖️" }
+			]
+		},
+		{
+			"id": 8,
+			"name": "Home",
+			"color": "#FFCC00",
+			"emoji": "🏠",
+			"words": [
+				{ "word": "bed", "hint": "You sleep in it", "image": "🛏️" },
+				{ "word": "door", "hint": "You open it to go in", "image": "🚪" },
+				{ "word": "lamp", "hint": "Gives light", "image": "💡" },
+				{ "word": "desk", "hint": "Table for working", "image": "🪑" },
+				{ "word": "chair", "hint": "You sit on it", "image": "🪑" },
+				{ "word": "table", "hint": "Flat surface for eating", "image": "🪑" },
+				{ "word": "couch", "hint": "Soft furniture to sit on", "image": "🛋️" },
+				{ "word": "bath", "hint": "Where you get clean", "image": "🛁" },
+				{ "word": "stove", "hint": "For cooking food", "image": "🍳" },
+				{ "word": "oven", "hint": "For baking food", "image": "🍳" }
+			]
+		},
+		{
+			"id": 9,
+			"name": "Toys",
+			"color": "#5856D6",
+			"emoji": "🧸",
+			"words": [
+				{ "word": "ball", "hint": "Round toy you throw", "image": "⚽" },
+				{ "word": "doll", "hint": "Toy that looks like a person", "image": "🪆" },
+				{ "word": "bear", "hint": "Stuffed animal toy", "image": "🧸" },
+				{ "word": "block", "hint": "You build with it", "image": "🧱" },
+				{ "word": "kite", "hint": "Flies in the air on a string", "image": "🪁" },
+				{ "word": "drum", "hint": "You hit it to make music", "image": "🥁" },
+				{ "word": "top", "hint": "Spins around", "image": "🌀" },
+				{ "word": "train", "hint": "Toy with wheels on tracks", "image": "🚂" },
+				{ "word": "car", "hint": "Small vehicle toy", "image": "🚗" },
+				{ "word": "book", "hint": "Has pages and stories", "image": "📚" }
+			]
+		},
+		{
+			"id": 10,
+			"name": "Actions",
+			"color": "#AF52DE",
+			"emoji": "🏃",
+			"words": [
+				{ "word": "run", "hint": "Move very fast", "image": "🏃" },
+				{ "word": "jump", "hint": "Go up in the air", "image": "🦘" },
+				{ "word": "walk", "hint": "Move on your feet", "image": "🚶" },
+				{ "word": "eat", "hint": "Put food in your mouth", "image": "🍴" },
+				{ "word": "drink", "hint": "Swallow liquid", "image": "🥤" },
+				{ "word": "sleep", "hint": "Close eyes and rest", "image": "😴" },
+				{ "word": "play", "hint": "Have fun with toys", "image": "🎮" },
+				{ "word": "sing", "hint": "Make music with your voice", "image": "🎤" },
+				{ "word": "read", "hint": "Look at words in a book", "image": "📖" },
+				{ "word": "draw", "hint": "Make pictures with crayons", "image": "✏️" }
+			]
+		},
+		{
+			"id": 11,
+			"name": "School",
+			"color": "#32ADE6",
+			"emoji": "📚",
+			"words": [
+				{ "word": "book", "hint": "Has pages to read", "image": "📖" },
+				{ "word": "pen", "hint": "You write with it", "image": "🖊️" },
+				{ "word": "desk", "hint": "You sit at it in class", "image": "🪑" },
+				{ "word": "bag", "hint": "You carry your stuff in it", "image": "🎒" },
+				{ "word": "bell", "hint": "Rings when class starts", "image": "🔔" },
+				{ "word": "ruler", "hint": "Measures things", "image": "📏" },
+				{ "word": "glue", "hint": "Makes things stick", "image": "🧴" },
+				{ "word": "chalk", "hint": "Write on the board with it", "image": "✏️" },
+				{ "word": "map", "hint": "Shows where places are", "image": "🗺️" },
+				{ "word": "clay", "hint": "You can mold it", "image": "🧱" }
+			]
+		},
+		{
+			"id": 12,
+			"name": "Numbers",
+			"color": "#FF6B4E",
+			"emoji": "🔢",
+			"words": [
+				{ "word": "one", "hint": "The first number", "image": "1️⃣" },
+				{ "word": "two", "hint": "Comes after one", "image": "2️⃣" },
+				{ "word": "three", "hint": "Comes after two", "image": "3️⃣" },
+				{ "word": "four", "hint": "Comes after three", "image": "4️⃣" },
+				{ "word": "five", "hint": "Half of ten", "image": "5️⃣" },
+				{ "word": "six", "hint": "Comes after five", "image": "6️⃣" },
+				{ "word": "seven", "hint": "Comes after six", "image": "7️⃣" },
+				{ "word": "eight", "hint": "Comes after seven", "image": "8️⃣" },
+				{ "word": "nine", "hint": "Comes after eight", "image": "9️⃣" },
+				{ "word": "ten", "hint": "Two hands of fingers", "image": "🔟" }
+			]
+		}
+	],
+	"scoring": {
+		"pointsPerWord": 10,
+		"passingScore": 50,
+		"totalQuestions": 10,
+		"maxScore": 100
+	},
+	"messages": {
+		"success": [
+			"Amazing, Norden! 🌟",
+			"Perfect spelling! 🎉",
+			"You're a star! ⭐",
+			"Fantastic job! 🚀",
+			"Incredible! 🏆"
+		],
+		"passing": "🏆 Congratulations, Norden! You're a {category} Champion! 🎉",
+		"tryAgain": "Keep trying, Norden! You've got this! 💪"
+	}
+}

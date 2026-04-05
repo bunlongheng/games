@@ -1,0 +1,786 @@
+{
+	"app": {
+		"title": "Norden Spelling Quiz",
+		"version": "1.0",
+		"kidNameDefault": "Norden",
+		"roundsPerQuiz": 10,
+		"pointsPerCorrect": 10,
+		"maxWordLength": 5,
+		"ui": {
+			"mode": "dark",
+			"palette12": [
+				"#FF3B30",
+				"#FF6B4E",
+				"#FF9500",
+				"#FFCC00",
+				"#D4E157",
+				"#34C759",
+				"#00C7BE",
+				"#32ADE6",
+				"#007AFF",
+				"#5856D6",
+				"#AF52DE",
+				"#FF2D55"
+			]
+		}
+	},
+	"keyboard": {
+		"layout": {
+			"rows": [
+				["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"],
+				["N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+			]
+		},
+		"style": {
+			"theme": "white",
+			"uppercase": true,
+			"keyPress": {
+				"correct": { "effect": "greenBorderGlow", "sound": "softDing" },
+				"wrong": { "effect": "wiggleOnly", "sound": "none", "disableKey": true }
+			}
+		}
+	},
+	"categories": [
+		{
+			"id": "animals",
+			"name": "Animals",
+			"color": "#FF3B30",
+			"emoji": "🐾",
+			"items": [
+				{
+					"id": "animals-1",
+					"word": "cat",
+					"say": "cat",
+					"imageQuery": "cartoon cat icon"
+				},
+				{
+					"id": "animals-2",
+					"word": "dog",
+					"say": "dog",
+					"imageQuery": "cartoon dog icon"
+				},
+				{
+					"id": "animals-3",
+					"word": "bear",
+					"say": "bear",
+					"imageQuery": "cartoon bear icon"
+				},
+				{
+					"id": "animals-4",
+					"word": "lion",
+					"say": "lion",
+					"imageQuery": "cartoon lion icon"
+				},
+				{
+					"id": "animals-5",
+					"word": "tiger",
+					"say": "tiger",
+					"imageQuery": "cartoon tiger icon"
+				},
+				{
+					"id": "animals-6",
+					"word": "duck",
+					"say": "duck",
+					"imageQuery": "cartoon duck icon"
+				},
+				{
+					"id": "animals-7",
+					"word": "mouse",
+					"say": "mouse",
+					"imageQuery": "cartoon mouse icon"
+				},
+				{
+					"id": "animals-8",
+					"word": "zebra",
+					"say": "zebra",
+					"imageQuery": "cartoon zebra icon"
+				},
+				{
+					"id": "animals-9",
+					"word": "shark",
+					"say": "shark",
+					"imageQuery": "cartoon shark icon"
+				},
+				{
+					"id": "animals-10",
+					"word": "horse",
+					"say": "horse",
+					"imageQuery": "cartoon horse icon"
+				}
+			]
+		},
+		{
+			"id": "colors",
+			"name": "Colors",
+			"color": "#FF6B4E",
+			"emoji": "🎨",
+			"items": [
+				{
+					"id": "colors-1",
+					"word": "red",
+					"say": "red",
+					"imageQuery": "red color swatch icon"
+				},
+				{
+					"id": "colors-2",
+					"word": "blue",
+					"say": "blue",
+					"imageQuery": "blue color swatch icon"
+				},
+				{
+					"id": "colors-3",
+					"word": "green",
+					"say": "green",
+					"imageQuery": "green color swatch icon"
+				},
+				{
+					"id": "colors-4",
+					"word": "pink",
+					"say": "pink",
+					"imageQuery": "pink color swatch icon"
+				},
+				{
+					"id": "colors-5",
+					"word": "white",
+					"say": "white",
+					"imageQuery": "white color swatch icon"
+				},
+				{
+					"id": "colors-6",
+					"word": "black",
+					"say": "black",
+					"imageQuery": "black color swatch icon"
+				},
+				{
+					"id": "colors-7",
+					"word": "gray",
+					"say": "gray",
+					"imageQuery": "gray color swatch icon"
+				},
+				{
+					"id": "colors-8",
+					"word": "brown",
+					"say": "brown",
+					"imageQuery": "brown color swatch icon"
+				},
+				{
+					"id": "colors-9",
+					"word": "gold",
+					"say": "gold",
+					"imageQuery": "gold color swatch icon"
+				},
+				{
+					"id": "colors-10",
+					"word": "teal",
+					"say": "teal",
+					"imageQuery": "teal color swatch icon"
+				}
+			]
+		},
+		{
+			"id": "vehicles",
+			"name": "Vehicles",
+			"color": "#FF9500",
+			"emoji": "🚗",
+			"items": [
+				{
+					"id": "vehicles-1",
+					"word": "car",
+					"say": "car",
+					"imageQuery": "cartoon car icon"
+				},
+				{
+					"id": "vehicles-2",
+					"word": "bus",
+					"say": "bus",
+					"imageQuery": "cartoon bus icon"
+				},
+				{
+					"id": "vehicles-3",
+					"word": "train",
+					"say": "train",
+					"imageQuery": "cartoon train icon"
+				},
+				{
+					"id": "vehicles-4",
+					"word": "boat",
+					"say": "boat",
+					"imageQuery": "cartoon boat icon"
+				},
+				{
+					"id": "vehicles-5",
+					"word": "truck",
+					"say": "truck",
+					"imageQuery": "cartoon truck icon"
+				},
+				{
+					"id": "vehicles-6",
+					"word": "plane",
+					"say": "plane",
+					"imageQuery": "cartoon airplane icon"
+				},
+				{
+					"id": "vehicles-7",
+					"word": "scoot",
+					"say": "scoot",
+					"imageQuery": "cartoon scooter icon"
+				},
+				{
+					"id": "vehicles-8",
+					"word": "bike",
+					"say": "bike",
+					"imageQuery": "cartoon bicycle icon"
+				},
+				{
+					"id": "vehicles-9",
+					"word": "taxi",
+					"say": "taxi",
+					"imageQuery": "cartoon taxi icon"
+				},
+				{
+					"id": "vehicles-10",
+					"word": "van",
+					"say": "van",
+					"imageQuery": "cartoon van icon"
+				}
+			]
+		},
+		{
+			"id": "food",
+			"name": "Food",
+			"color": "#FFCC00",
+			"emoji": "🍓",
+			"items": [
+				{
+					"id": "food-1",
+					"word": "apple",
+					"say": "apple",
+					"imageQuery": "cartoon apple icon"
+				},
+				{
+					"id": "food-2",
+					"word": "grape",
+					"say": "grape",
+					"imageQuery": "cartoon grapes icon"
+				},
+				{
+					"id": "food-3",
+					"word": "bread",
+					"say": "bread",
+					"imageQuery": "cartoon bread icon"
+				},
+				{
+					"id": "food-4",
+					"word": "pizza",
+					"say": "pizza",
+					"imageQuery": "cartoon pizza icon"
+				},
+				{
+					"id": "food-5",
+					"word": "taco",
+					"say": "taco",
+					"imageQuery": "cartoon taco icon"
+				},
+				{
+					"id": "food-6",
+					"word": "mango",
+					"say": "mango",
+					"imageQuery": "cartoon mango icon"
+				},
+				{
+					"id": "food-7",
+					"word": "melon",
+					"say": "melon",
+					"imageQuery": "cartoon melon icon"
+				},
+				{
+					"id": "food-8",
+					"word": "berry",
+					"say": "berry",
+					"imageQuery": "cartoon berries icon"
+				},
+				{
+					"id": "food-9",
+					"word": "toast",
+					"say": "toast",
+					"imageQuery": "cartoon toast icon"
+				},
+				{
+					"id": "food-10",
+					"word": "juice",
+					"say": "juice",
+					"imageQuery": "cartoon juice box icon"
+				}
+			]
+		},
+		{
+			"id": "home",
+			"name": "Home",
+			"color": "#D4E157",
+			"emoji": "🏠",
+			"items": [
+				{
+					"id": "home-1",
+					"word": "chair",
+					"say": "chair",
+					"imageQuery": "cartoon chair icon"
+				},
+				{
+					"id": "home-2",
+					"word": "table",
+					"say": "table",
+					"imageQuery": "cartoon table icon"
+				},
+				{
+					"id": "home-3",
+					"word": "couch",
+					"say": "couch",
+					"imageQuery": "cartoon couch icon"
+				},
+				{
+					"id": "home-4",
+					"word": "lamp",
+					"say": "lamp",
+					"imageQuery": "cartoon lamp icon"
+				},
+				{
+					"id": "home-5",
+					"word": "clock",
+					"say": "clock",
+					"imageQuery": "cartoon clock icon"
+				},
+				{
+					"id": "home-6",
+					"word": "door",
+					"say": "door",
+					"imageQuery": "cartoon door icon"
+				},
+				{
+					"id": "home-7",
+					"word": "floor",
+					"say": "floor",
+					"imageQuery": "cartoon floor icon"
+				},
+				{ "id": "home-8", "word": "bed", "say": "bed", "imageQuery": "cartoon bed icon" },
+				{
+					"id": "home-9",
+					"word": "soap",
+					"say": "soap",
+					"imageQuery": "cartoon soap icon"
+				},
+				{
+					"id": "home-10",
+					"word": "towel",
+					"say": "towel",
+					"imageQuery": "cartoon towel icon"
+				}
+			]
+		},
+		{
+			"id": "nature",
+			"name": "Nature",
+			"color": "#34C759",
+			"emoji": "🌿",
+			"items": [
+				{
+					"id": "nature-1",
+					"word": "tree",
+					"say": "tree",
+					"imageQuery": "cartoon tree icon"
+				},
+				{
+					"id": "nature-2",
+					"word": "leaf",
+					"say": "leaf",
+					"imageQuery": "cartoon leaf icon"
+				},
+				{
+					"id": "nature-3",
+					"word": "rock",
+					"say": "rock",
+					"imageQuery": "cartoon rock icon"
+				},
+				{
+					"id": "nature-4",
+					"word": "cloud",
+					"say": "cloud",
+					"imageQuery": "cartoon cloud icon"
+				},
+				{
+					"id": "nature-5",
+					"word": "rain",
+					"say": "rain",
+					"imageQuery": "cartoon rain icon"
+				},
+				{ "id": "nature-6", "word": "sun", "say": "sun", "imageQuery": "cartoon sun icon" },
+				{
+					"id": "nature-7",
+					"word": "stars",
+					"say": "stars",
+					"imageQuery": "cartoon stars icon"
+				},
+				{
+					"id": "nature-8",
+					"word": "ocean",
+					"say": "ocean",
+					"imageQuery": "cartoon ocean icon"
+				},
+				{
+					"id": "nature-9",
+					"word": "river",
+					"say": "river",
+					"imageQuery": "cartoon river icon"
+				},
+				{
+					"id": "nature-10",
+					"word": "snow",
+					"say": "snow",
+					"imageQuery": "cartoon snowflake icon"
+				}
+			]
+		},
+		{
+			"id": "shapes",
+			"name": "Shapes",
+			"color": "#00C7BE",
+			"emoji": "🔺",
+			"items": [
+				{
+					"id": "shapes-1",
+					"word": "circle",
+					"say": "circle",
+					"imageQuery": "circle shape icon"
+				},
+				{
+					"id": "shapes-2",
+					"word": "square",
+					"say": "square",
+					"imageQuery": "square shape icon"
+				},
+				{
+					"id": "shapes-3",
+					"word": "oval",
+					"say": "oval",
+					"imageQuery": "oval shape icon"
+				},
+				{
+					"id": "shapes-4",
+					"word": "star",
+					"say": "star",
+					"imageQuery": "star shape icon"
+				},
+				{
+					"id": "shapes-5",
+					"word": "heart",
+					"say": "heart",
+					"imageQuery": "heart shape icon"
+				},
+				{ "id": "shapes-6", "word": "arrow", "say": "arrow", "imageQuery": "arrow icon" },
+				{
+					"id": "shapes-7",
+					"word": "cube",
+					"say": "cube",
+					"imageQuery": "cube shape icon"
+				},
+				{ "id": "shapes-8", "word": "ring", "say": "ring", "imageQuery": "ring icon" },
+				{ "id": "shapes-9", "word": "dot", "say": "dot", "imageQuery": "dot icon" },
+				{ "id": "shapes-10", "word": "line", "say": "line", "imageQuery": "line icon" }
+			]
+		},
+		{
+			"id": "clothes",
+			"name": "Clothes",
+			"color": "#32ADE6",
+			"emoji": "👕",
+			"items": [
+				{
+					"id": "clothes-1",
+					"word": "shirt",
+					"say": "shirt",
+					"imageQuery": "cartoon shirt icon"
+				},
+				{
+					"id": "clothes-2",
+					"word": "pants",
+					"say": "pants",
+					"imageQuery": "cartoon pants icon"
+				},
+				{
+					"id": "clothes-3",
+					"word": "shoes",
+					"say": "shoes",
+					"imageQuery": "cartoon shoes icon"
+				},
+				{
+					"id": "clothes-4",
+					"word": "socks",
+					"say": "socks",
+					"imageQuery": "cartoon socks icon"
+				},
+				{
+					"id": "clothes-5",
+					"word": "hat",
+					"say": "hat",
+					"imageQuery": "cartoon hat icon"
+				},
+				{
+					"id": "clothes-6",
+					"word": "coat",
+					"say": "coat",
+					"imageQuery": "cartoon coat icon"
+				},
+				{
+					"id": "clothes-7",
+					"word": "dress",
+					"say": "dress",
+					"imageQuery": "cartoon dress icon"
+				},
+				{
+					"id": "clothes-8",
+					"word": "scarf",
+					"say": "scarf",
+					"imageQuery": "cartoon scarf icon"
+				},
+				{
+					"id": "clothes-9",
+					"word": "glove",
+					"say": "glove",
+					"imageQuery": "cartoon glove icon"
+				},
+				{
+					"id": "clothes-10",
+					"word": "belt",
+					"say": "belt",
+					"imageQuery": "cartoon belt icon"
+				}
+			]
+		},
+		{
+			"id": "family",
+			"name": "Family",
+			"color": "#007AFF",
+			"emoji": "👨‍👩‍👧‍👦",
+			"items": [
+				{ "id": "family-1", "word": "mom", "say": "mom", "imageQuery": "cartoon mom icon" },
+				{ "id": "family-2", "word": "dad", "say": "dad", "imageQuery": "cartoon dad icon" },
+				{ "id": "family-3", "word": "kid", "say": "kid", "imageQuery": "cartoon kid icon" },
+				{
+					"id": "family-4",
+					"word": "baby",
+					"say": "baby",
+					"imageQuery": "cartoon baby icon"
+				},
+				{
+					"id": "family-5",
+					"word": "sis",
+					"say": "sis",
+					"imageQuery": "cartoon sister icon"
+				},
+				{
+					"id": "family-6",
+					"word": "bro",
+					"say": "bro",
+					"imageQuery": "cartoon brother icon"
+				},
+				{
+					"id": "family-7",
+					"word": "aunt",
+					"say": "aunt",
+					"imageQuery": "cartoon aunt icon"
+				},
+				{
+					"id": "family-8",
+					"word": "uncle",
+					"say": "uncle",
+					"imageQuery": "cartoon uncle icon"
+				},
+				{
+					"id": "family-9",
+					"word": "grams",
+					"say": "grams",
+					"imageQuery": "cartoon grandma icon"
+				},
+				{
+					"id": "family-10",
+					"word": "grand",
+					"say": "grand",
+					"imageQuery": "cartoon grandparent icon"
+				}
+			]
+		},
+		{
+			"id": "school",
+			"name": "School",
+			"color": "#5856D6",
+			"emoji": "📚",
+			"items": [
+				{
+					"id": "school-1",
+					"word": "book",
+					"say": "book",
+					"imageQuery": "cartoon book icon"
+				},
+				{
+					"id": "school-2",
+					"word": "pencil",
+					"say": "pencil",
+					"imageQuery": "cartoon pencil icon"
+				},
+				{
+					"id": "school-3",
+					"word": "paper",
+					"say": "paper",
+					"imageQuery": "cartoon paper icon"
+				},
+				{
+					"id": "school-4",
+					"word": "ruler",
+					"say": "ruler",
+					"imageQuery": "cartoon ruler icon"
+				},
+				{
+					"id": "school-5",
+					"word": "glue",
+					"say": "glue",
+					"imageQuery": "cartoon glue icon"
+				},
+				{ "id": "school-6", "word": "pen", "say": "pen", "imageQuery": "cartoon pen icon" },
+				{
+					"id": "school-7",
+					"word": "class",
+					"say": "class",
+					"imageQuery": "cartoon classroom icon"
+				},
+				{
+					"id": "school-8",
+					"word": "teach",
+					"say": "teach",
+					"imageQuery": "cartoon teacher icon"
+				},
+				{
+					"id": "school-9",
+					"word": "read",
+					"say": "read",
+					"imageQuery": "cartoon reading icon"
+				},
+				{
+					"id": "school-10",
+					"word": "write",
+					"say": "write",
+					"imageQuery": "cartoon writing icon"
+				}
+			]
+		},
+		{
+			"id": "space",
+			"name": "Space",
+			"color": "#AF52DE",
+			"emoji": "🪐",
+			"items": [
+				{
+					"id": "space-1",
+					"word": "moon",
+					"say": "moon",
+					"imageQuery": "cartoon moon icon"
+				},
+				{
+					"id": "space-2",
+					"word": "star",
+					"say": "star",
+					"imageQuery": "cartoon star icon"
+				},
+				{ "id": "space-3", "word": "sun", "say": "sun", "imageQuery": "cartoon sun icon" },
+				{
+					"id": "space-4",
+					"word": "mars",
+					"say": "mars",
+					"imageQuery": "cartoon Mars planet icon"
+				},
+				{ "id": "space-5", "word": "orbit", "say": "orbit", "imageQuery": "orbit icon" },
+				{
+					"id": "space-6",
+					"word": "rocket",
+					"say": "rocket",
+					"imageQuery": "cartoon rocket icon"
+				},
+				{
+					"id": "space-7",
+					"word": "alien",
+					"say": "alien",
+					"imageQuery": "cartoon alien icon"
+				},
+				{ "id": "space-8", "word": "space", "say": "space", "imageQuery": "space icon" },
+				{
+					"id": "space-9",
+					"word": "astro",
+					"say": "astro",
+					"imageQuery": "cartoon astronaut icon"
+				},
+				{
+					"id": "space-10",
+					"word": "comet",
+					"say": "comet",
+					"imageQuery": "cartoon comet icon"
+				}
+			]
+		},
+		{
+			"id": "fun",
+			"name": "Fun",
+			"color": "#FF2D55",
+			"emoji": "🎉",
+			"items": [
+				{
+					"id": "fun-1",
+					"word": "game",
+					"say": "game",
+					"imageQuery": "cartoon game controller icon"
+				},
+				{
+					"id": "fun-2",
+					"word": "music",
+					"say": "music",
+					"imageQuery": "cartoon music note icon"
+				},
+				{
+					"id": "fun-3",
+					"word": "dance",
+					"say": "dance",
+					"imageQuery": "cartoon dancing icon"
+				},
+				{
+					"id": "fun-4",
+					"word": "laugh",
+					"say": "laugh",
+					"imageQuery": "laugh emoji icon"
+				},
+				{
+					"id": "fun-5",
+					"word": "smile",
+					"say": "smile",
+					"imageQuery": "smile emoji icon"
+				},
+				{ "id": "fun-6", "word": "party", "say": "party", "imageQuery": "party icon" },
+				{ "id": "fun-7", "word": "play", "say": "play", "imageQuery": "play button icon" },
+				{
+					"id": "fun-8",
+					"word": "train",
+					"say": "train",
+					"imageQuery": "cartoon train icon"
+				},
+				{
+					"id": "fun-9",
+					"word": "build",
+					"say": "build",
+					"imageQuery": "cartoon blocks icon"
+				},
+				{
+					"id": "fun-10",
+					"word": "dress",
+					"say": "dress",
+					"imageQuery": "cartoon dress icon"
+				}
+			]
+		}
+	]
+}

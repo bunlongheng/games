@@ -1,0 +1,862 @@
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+.container {
+  height: 100vh;
+  background: #0a0a1a;
+  color: #fff;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: rgba(10, 10, 26, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  background: linear-gradient(135deg, #f9e030 0%, #ff7e5f 50%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  user-select: none;
+}
+
+.titleStar {
+  font-size: 1rem;
+  -webkit-text-fill-color: #f9e030;
+  color: #f9e030;
+}
+
+.modeToggle {
+  display: flex;
+  gap: 8px;
+}
+
+.modeBtn {
+  padding: 8px 18px;
+  border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.03em;
+}
+
+.modeBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.modeBtnActive {
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+}
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px 8px;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* ============================================================
+   QUIZ HEADER
+   ============================================================ */
+.quizHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 16px;
+}
+
+.scoreDisplay {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #f9e030;
+  white-space: nowrap;
+  min-width: 60px;
+}
+
+.progressBar {
+  flex: 1;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  border-radius: 100px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+}
+
+.progressLabel {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+  min-width: 70px;
+  text-align: right;
+}
+
+/* ============================================================
+   QUIZ QUESTION
+   ============================================================ */
+.quizQuestion {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.quizQuestion strong {
+  color: #a78bfa;
+  font-size: 1.35rem;
+}
+
+/* ============================================================
+   MAP LAYOUT
+   ============================================================ */
+.mapLayout {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+}
+
+.mapLayoutWithPanel {
+  /* side by side on desktop, default stacked on mobile */
+}
+
+/* ============================================================
+   MAP CONTAINER
+   ============================================================ */
+.mapContainer {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ============================================================
+   STATE PATHS
+   ============================================================ */
+.stateGroup {
+  cursor: pointer;
+}
+
+.statePath {
+  cursor: pointer;
+  outline: none;
+}
+
+.findItHover:hover {
+  cursor: crosshair;
+}
+
+/* -------- Region hover (legend hover highlights whole region) -------- */
+.regionHovered {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.35));
+  transition: filter 0.15s;
+}
+
+/* -------- Selected (study) -------- */
+.selected {
+  fill: #ffffff !important;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+  stroke: #fff !important;
+  stroke-width: 2.5 !important;
+}
+
+/* -------- Quiz highlight (nameIt) — pulsing -------- */
+.quizHighlight {
+  fill: #facc15 !important;
+  stroke: #fff !important;
+  stroke-width: 2.5 !important;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* -------- Wrong answer — red flash + wiggle -------- */
+.wrongAnswer {
+  fill: #ef4444 !important;
+  stroke: #fff !important;
+  stroke-width: 2.5 !important;
+  animation: wiggle 0.4s ease, flashRed 0.4s ease;
+}
+
+/* -------- Correct answer — green flash -------- */
+.correctAnswer {
+  fill: #22c55e !important;
+  stroke: #fff !important;
+  stroke-width: 2.5 !important;
+  animation: flashGreen 0.6s ease;
+}
+
+/* ============================================================
+   STATE LABELS
+   ============================================================ */
+.stateLabel {
+  font-size: 9px;
+  font-weight: 700;
+  fill: rgba(255, 255, 255, 0.92);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  paint-order: stroke fill;
+  stroke: rgba(0,0,0,0.6);
+  stroke-width: 2px;
+}
+
+/* ============================================================
+   INSET BOXES
+   ============================================================ */
+.insetBox {
+  fill: rgba(255, 255, 255, 0.03);
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+  rx: 4;
+  ry: 4;
+}
+
+.insetLabel {
+  font-size: 8px;
+  fill: rgba(255, 255, 255, 0.45);
+  font-style: italic;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ============================================================
+   INFO PANEL
+   ============================================================ */
+.infoPanel {
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: width 0.3s ease, opacity 0.3s ease, min-width 0.3s ease;
+  background: rgba(15, 15, 35, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 0;
+  flex-shrink: 0;
+  position: relative;
+  /* height is determined by the flex row — matches map height */
+}
+
+.infoPanelOpen {
+  width: 30%;
+  min-width: 260px;
+  max-width: 420px;
+  opacity: 1;
+  padding: 20px 18px 24px;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease;
+  outline: 2px solid var(--region-color-inverted, rgba(255,255,255,0.2));
+  outline-offset: -2px;
+  box-shadow: 0 0 30px color-mix(in srgb, var(--region-color, #888) 20%, transparent);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 80, 80, 0.3);
+  color: #fff;
+  border-color: rgba(255, 80, 80, 0.5);
+}
+
+.regionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--region-color, #888);
+  margin-bottom: 6px;
+}
+
+.regionDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--region-color, #888);
+  box-shadow: 0 0 8px var(--region-color, #888);
+  flex-shrink: 0;
+}
+
+.stateNameLarge {
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin: 0 0 2px;
+  color: #fff;
+  line-height: 1.2;
+  padding-right: 32px;
+}
+
+.statePronunciation {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-style: italic;
+  margin: 0 0 12px;
+  font-family: monospace;
+}
+
+.speakBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 50px;
+  border: 1px solid color-mix(in srgb, var(--region-color, #888) 50%, transparent);
+  background: color-mix(in srgb, var(--region-color, #888) 15%, transparent);
+  color: var(--region-color, #c4b5fd);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 16px;
+}
+
+.speakBtn:hover {
+  background: color-mix(in srgb, var(--region-color, #888) 30%, transparent);
+  border-color: var(--region-color, #888);
+  color: #fff;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.infoItem {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.infoItemFull {
+  grid-column: 1 / -1;
+}
+
+.infoLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.infoValue {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.4;
+}
+
+.infoPop {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+}
+
+.funFacts {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 14px;
+}
+
+.funFactsTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--region-color, #f9e030);
+  margin: 0 0 10px;
+  letter-spacing: 0.04em;
+}
+
+.funFact {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  background: color-mix(in srgb, var(--region-color, #888) 10%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--region-color, #888) 55%, transparent);
+  border-radius: 8px;
+}
+
+.infoPanelPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.9rem;
+  padding: 40px 20px;
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   QUIZ OPTIONS
+   ============================================================ */
+.optionsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 640px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 4px;
+}
+
+.optionBtn {
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.07);
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: center;
+  min-height: 56px;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
+.optionBtn:hover:not(:disabled) {
+  background: rgba(124, 58, 237, 0.25);
+  border-color: rgba(167, 139, 250, 0.6);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+}
+
+.optionBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.optionBtnCorrect {
+  background: rgba(34, 197, 94, 0.25) !important;
+  border-color: #22c55e !important;
+  color: #86efac !important;
+  animation: flashGreen 0.6s ease;
+}
+
+.optionBtnWrong {
+  background: rgba(239, 68, 68, 0.25) !important;
+  border-color: #ef4444 !important;
+  color: #fca5a5 !important;
+  animation: wiggle 0.4s ease, flashRed 0.4s ease;
+}
+
+/* ============================================================
+   FIND IT HINT
+   ============================================================ */
+.findItHint {
+  text-align: center;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 6px 0;
+}
+
+/* ============================================================
+   VICTORY SCREEN
+   ============================================================ */
+.victoryScreen {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.victoryCard {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(37, 99, 235, 0.15));
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 24px;
+  padding: 40px 36px;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.victoryEmoji {
+  font-size: 4rem;
+  margin-bottom: 8px;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.victoryTitle {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0 0 6px;
+  background: linear-gradient(135deg, #f9e030, #ff7e5f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.08em;
+}
+
+.victorySubtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 24px;
+}
+
+.finalScore {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.finalScoreNum {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #f9e030;
+  line-height: 1;
+}
+
+.finalScoreDen {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.finalScoreLabel {
+  margin: 8px 0 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+.restartBtn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+
+.restartBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.5);
+}
+
+.studyModeBtn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.studyModeBtn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================================
+   LEGEND
+   ============================================================ */
+.legend {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px 12px;
+  padding: 7px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  cursor: pointer;
+  padding: 3px 7px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.legendItem:hover,
+.legendItemActive {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.legendDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes wiggle {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-6px) rotate(-2deg); }
+  40%  { transform: translateX(6px) rotate(2deg); }
+  60%  { transform: translateX(-5px) rotate(-1deg); }
+  80%  { transform: translateX(5px) rotate(1deg); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { filter: brightness(1) drop-shadow(0 0 4px rgba(250, 204, 21, 0.4)); }
+  50%       { filter: brightness(1.4) drop-shadow(0 0 12px rgba(250, 204, 21, 0.9)); }
+}
+
+@keyframes flashGreen {
+  0%   { filter: brightness(1); }
+  30%  { filter: brightness(1.8) drop-shadow(0 0 10px rgba(34, 197, 94, 0.9)); }
+  100% { filter: brightness(1); }
+}
+
+@keyframes flashRed {
+  0%   { filter: brightness(1); }
+  30%  { filter: brightness(1.8) drop-shadow(0 0 10px rgba(239, 68, 68, 0.9)); }
+  100% { filter: brightness(1); }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+.infoPanel::-webkit-scrollbar {
+  width: 4px;
+}
+.infoPanel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.infoPanel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 14px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .modeBtn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .main {
+    padding: 8px 10px 6px;
+  }
+
+  .mapLayout {
+    flex-direction: column;
+  }
+
+  .mapLayoutWithPanel {
+    flex-direction: column;
+  }
+
+  .infoPanel {
+    /* On mobile: show as bottom sheet style below map */
+    width: 100% !important;
+    min-width: 0 !important;
+    max-height: none !important;
+  }
+
+  .infoPanelOpen {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 16px 14px 20px;
+    animation: slideInUp 0.3s ease;
+  }
+
+  .stateNameLarge {
+    font-size: 1.3rem;
+  }
+
+  .optionsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .optionBtn {
+    font-size: 0.85rem;
+    padding: 11px 10px;
+    min-height: 48px;
+  }
+
+  .quizQuestion {
+    font-size: 1rem;
+  }
+
+  .legend {
+    gap: 5px 10px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .optionsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
