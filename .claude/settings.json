@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "LAN_IP=$(ipconfig getifaddr en0 2>/dev/null || echo 'unavailable'); if ! lsof -i :3011 -sTCP:LISTEN >/dev/null 2>&1; then cd /Users/bheng/Sites/games && nohup npm run dev -- -p 3011 -H 0.0.0.0 > /tmp/games-dev.log 2>&1 & sleep 3; fi; curl -s http://localhost:9875/api/apps/games > /dev/null 2>&1 && echo \"Games registered with local-apps\" || echo \"local-apps not reachable\"; echo \"Local: http://localhost:3011\nLAN:   http://${LAN_IP}:3011\""
+          }
+        ]
+      }
+    ]
+  }
+}

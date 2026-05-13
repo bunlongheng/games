@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
+  padding: 8px 20px;
   background: rgba(10, 10, 26, 0.96);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -85,8 +85,8 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  padding: 12px 16px 8px;
-  gap: 12px;
+  padding: 8px 12px 4px;
+  gap: 8px;
   overflow: hidden;
 }
 
@@ -95,12 +95,12 @@
    ============================================================ */
 .quizHeader {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 8px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  padding: 10px 16px;
+  padding: 12px 14px;
 }
 
 .scoreDisplay {
@@ -159,21 +159,21 @@
    ============================================================ */
 .mapLayout {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   align-items: stretch;
   flex: 1;
   min-height: 0;
 }
 
 .mapLayoutWithPanel {
-  /* side by side on desktop, default stacked on mobile */
+  /* side by side always */
 }
 
 /* ============================================================
    MAP CONTAINER
    ============================================================ */
 .mapContainer {
-  flex: 1;
+  flex: 0 0 70%;
   min-width: 0;
   min-height: 0;
   border-radius: 16px;
@@ -289,20 +289,20 @@
   min-width: 0;
   overflow: hidden;
   opacity: 0;
-  transition: width 0.3s ease, opacity 0.3s ease, min-width 0.3s ease;
+  transition: width 0.3s ease, opacity 0.3s ease, min-width 0.3s ease, flex 0.3s ease;
   background: rgba(15, 15, 35, 0.98);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   padding: 0;
-  flex-shrink: 0;
+  flex: 0 0 0;
   position: relative;
-  /* height is determined by the flex row — matches map height */
 }
 
 .infoPanelOpen {
-  width: 30%;
-  min-width: 260px;
-  max-width: 420px;
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  max-width: none;
   opacity: 1;
   padding: 20px 18px 24px;
   overflow-y: auto;
@@ -477,6 +477,30 @@
 .placeholderIcon {
   font-size: 3rem;
   opacity: 0.4;
+}
+
+/* ============================================================
+   QUIZ SIDEBAR
+   ============================================================ */
+.quizSidebar {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.quizOptionsStack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
 }
 
 /* ============================================================
@@ -777,76 +801,169 @@
    ============================================================ */
 @media (max-width: 768px) {
   .header {
-    padding: 10px 14px;
+    padding: 6px 10px;
   }
 
   .title {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
 
   .modeBtn {
-    padding: 6px 12px;
-    font-size: 0.8rem;
+    padding: 5px 10px;
+    font-size: 0.75rem;
   }
 
   .main {
-    padding: 8px 10px 6px;
+    padding: 4px 6px 2px;
+    gap: 4px;
   }
 
   .mapLayout {
     flex-direction: column;
+    gap: 4px;
   }
 
   .mapLayoutWithPanel {
     flex-direction: column;
   }
 
+  .mapContainer {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
   .infoPanel {
-    /* On mobile: show as bottom sheet style below map */
     width: 100% !important;
     min-width: 0 !important;
     max-height: none !important;
+    flex: 0 0 auto;
   }
 
   .infoPanelOpen {
     width: 100% !important;
     min-width: 0 !important;
-    padding: 16px 14px 20px;
+    padding: 12px 10px 16px;
     animation: slideInUp 0.3s ease;
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+
+  .quizSidebar {
+    flex: 0 0 auto;
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .quizHeader {
+    padding: 8px 10px;
+    gap: 4px;
+  }
+
+  .scoreDisplay {
+    font-size: 0.85rem;
+  }
+
+  .progressBar {
+    height: 6px;
+  }
+
+  .progressLabel {
+    font-size: 0.65rem;
+  }
+
+  .quizQuestion {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+
+  .quizOptionsStack {
+    gap: 6px;
   }
 
   .stateNameLarge {
-    font-size: 1.3rem;
-  }
-
-  .optionsGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    font-size: 1.2rem;
   }
 
   .optionBtn {
     font-size: 0.85rem;
-    padding: 11px 10px;
-    min-height: 48px;
-  }
-
-  .quizQuestion {
-    font-size: 1rem;
+    padding: 10px 10px;
+    min-height: 44px;
+    border-radius: 10px;
   }
 
   .legend {
-    gap: 5px 10px;
-    padding: 8px 12px;
+    gap: 3px 8px;
+    padding: 5px 8px;
+  }
+
+  .legendLabel {
+    font-size: 0.6rem;
+  }
+
+  .legendDot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .infoGrid {
+    gap: 6px;
+  }
+
+  .infoItem {
+    padding: 6px 8px;
+  }
+
+  .findItHint {
+    font-size: 0.8rem;
+    padding: 4px 0;
   }
 }
 
 @media (max-width: 480px) {
-  .optionsGrid {
-    grid-template-columns: 1fr;
+  .header {
+    padding: 5px 8px;
+  }
+
+  .title {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .modeBtn {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+
+  .main {
+    padding: 2px 4px 2px;
+    gap: 3px;
+  }
+
+  .quizQuestion {
+    font-size: 0.82rem;
+    padding: 5px 8px;
+  }
+
+  .quizQuestion strong {
+    font-size: 0.95rem;
+  }
+
+  .optionBtn {
+    font-size: 0.8rem;
+    padding: 9px 8px;
+    min-height: 40px;
   }
 
   .infoGrid {
     grid-template-columns: 1fr;
+  }
+
+  .infoPanelOpen {
+    max-height: 35vh;
+  }
+
+  .stateLabel {
+    font-size: 7px;
   }
 }
 

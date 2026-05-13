@@ -176,7 +176,7 @@ export default function StatesGame() {
       setCorrectAnswer(chosen.id);
       setScore((s) => ({ correct: s.correct + 1, total: s.total + 1 }));
       playSuccess();
-      confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+      confetti({ particleCount: 80, spread: 60, origin: { x: 0.85, y: 0.5 } });
       setTimeout(() => { advanceQuiz(); setIsAnswering(false); }, 1500);
     } else {
       setWrongAnswer(chosen.id);
@@ -229,24 +229,6 @@ export default function StatesGame() {
       </header>
 
       <main className={styles.main}>
-        {/* Quiz header bar */}
-        {mode === "quiz" && !quizDone && currentQ && (
-          <div className={styles.quizHeader}>
-            <div className={styles.scoreDisplay}>⭐ {score.correct} / {totalQuestions}</div>
-            <div className={styles.progressBar}><div className={styles.progressFill} style={{ width: `${progressPct}%` }} /></div>
-            <div className={styles.progressLabel}>{score.total} answered</div>
-          </div>
-        )}
-
-        {/* Quiz question prompt */}
-        {mode === "quiz" && !quizDone && currentQ && (
-          <div className={styles.quizQuestion}>
-            {quizType === "findIt"
-              ? <span>🗺️ Find <strong>{currentQ.name}</strong> on the map!</span>
-              : <span>❓ What state is highlighted?</span>}
-          </div>
-        )}
-
         {/* Map + panel layout */}
         <div className={`${styles.mapLayout} ${selectedState && mode === "study" ? styles.mapLayoutWithPanel : ""}`}>
           <div className={styles.mapContainer} onClick={() => mode === "study" && setSelectedState(null)}>
@@ -349,7 +331,7 @@ export default function StatesGame() {
                     </div>
                     <div className={styles.infoItem}>
                       <span className={styles.infoLabel}>📅 Union</span>
-                      <span className={styles.infoValue}>#{selectedState.unionOrder} — {selectedState.unionDate}</span>
+                      <span className={styles.infoValue}>#{selectedState.unionOrder} - {selectedState.unionDate}</span>
                     </div>
                     <div className={styles.infoItem}>
                       <span className={styles.infoLabel}>🗺️ Region</span>
@@ -388,27 +370,41 @@ export default function StatesGame() {
               )}
             </div>
           )}
+
+          {/* Quiz sidebar with progress + question + options */}
+          {mode === "quiz" && !quizDone && currentQ && (
+            <div className={styles.quizSidebar}>
+              <div className={styles.quizHeader}>
+                <div className={styles.scoreDisplay}>⭐ {score.correct} / {totalQuestions}</div>
+                <div className={styles.progressBar}><div className={styles.progressFill} style={{ width: `${progressPct}%` }} /></div>
+                <div className={styles.progressLabel}>{score.total} answered</div>
+              </div>
+
+              <div className={styles.quizQuestion}>
+                {quizType === "findIt"
+                  ? <span>🗺️ Find <strong>{currentQ.name}</strong> on the map!</span>
+                  : <span>❓ What state is highlighted?</span>}
+              </div>
+
+              {quizType === "nameIt" ? (
+                <div className={styles.quizOptionsStack}>
+                  {options.map((opt) => (
+                    <button
+                      key={opt.id}
+                      className={`${styles.optionBtn} ${wrongAnswer === opt.id ? styles.optionBtnWrong : ""} ${correctAnswer === opt.id ? styles.optionBtnCorrect : ""}`}
+                      onClick={() => handleAnswer(opt)}
+                      disabled={isAnswering}
+                    >
+                      {opt.name}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <div className={styles.findItHint}><span>👆 Click the state on the map</span></div>
+              )}
+            </div>
+          )}
         </div>
-
-        {/* Quiz options (nameIt) */}
-        {mode === "quiz" && !quizDone && currentQ && quizType === "nameIt" && (
-          <div className={styles.optionsGrid}>
-            {options.map((opt) => (
-              <button
-                key={opt.id}
-                className={`${styles.optionBtn} ${wrongAnswer === opt.id ? styles.optionBtnWrong : ""} ${correctAnswer === opt.id ? styles.optionBtnCorrect : ""}`}
-                onClick={() => handleAnswer(opt)}
-                disabled={isAnswering}
-              >
-                {opt.name}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {mode === "quiz" && !quizDone && currentQ && quizType === "findIt" && (
-          <div className={styles.findItHint}><span>👆 Click the state on the map above</span></div>
-        )}
 
         {/* Victory screen */}
         {mode === "quiz" && quizDone && (
