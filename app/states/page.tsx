@@ -62,7 +62,7 @@ export default function StatesGame() {
     faviconLetter: "S",
   });
 
-  const [mode, setMode] = useState<"study" | "quiz">("study");
+  const [mode, setMode] = useState<"study" | "quiz">("quiz");
   const [difficulty, setDifficulty] = useState<1 | 2 | 3 | 4 | 5>(1);
   const [soundOn, setSoundOn] = useState(true);
   const [timerOn, setTimerOn] = useState(false);
@@ -234,7 +234,7 @@ export default function StatesGame() {
 
   // Start timer when a new question loads
   useEffect(() => {
-    if (mode === "quiz" && currentQ && !quizDone && !isAnswering) startTimer();
+    if (mode === "quiz" && currentQ && !quizDone && !isAnswering && score.total > 0) startTimer();
     return () => stopTimer();
   }, [currentQ, mode, quizDone, isAnswering, startTimer, stopTimer]);
 
