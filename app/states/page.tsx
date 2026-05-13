@@ -199,6 +199,15 @@ export default function StatesGame() {
     if (mode === "quiz" && !currentQ && !quizDone) startQuiz();
   }, [mode, currentQ, quizDone, startQuiz]);
 
+  // Reset quiz when difficulty changes mid-quiz
+  useEffect(() => {
+    if (mode === "quiz" && score.total > 0) {
+      setCurrentQ(null);
+      setQuizDone(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [difficulty]);
+
   const advanceQuiz = useCallback(() => {
     setCorrectAnswer(null);
     setWrongAnswer(null);
@@ -484,27 +493,27 @@ export default function StatesGame() {
               )}
             </div>
           )}
-        </div>
 
-        {/* Victory screen */}
-        {mode === "quiz" && quizDone && (
-          <div className={styles.victoryScreen}>
-            <div className={styles.victoryCard}>
-              <div className={styles.victoryEmoji}>🎉</div>
-              <h2 className={styles.victoryTitle}>AMAZING!</h2>
-              <p className={styles.victorySubtitle}>You finished all 50 states!</p>
-              <div className={styles.finalScore}>
-                <span className={styles.finalScoreNum}>{score.correct}</span>
-                <span className={styles.finalScoreDen}> / {totalQuestions}</span>
-                <p className={styles.finalScoreLabel}>
-                  {score.correct === totalQuestions ? "Perfect score! 🏆" : score.correct >= totalQuestions * 0.8 ? "Excellent! 🌟" : score.correct >= totalQuestions * 0.6 ? "Great job! 👏" : "Keep practicing! 💪"}
-                </p>
+          {/* Victory sidebar */}
+          {mode === "quiz" && quizDone && (
+            <div className={styles.quizSidebar}>
+              <div className={styles.victoryCard}>
+                <div className={styles.victoryEmoji}>🎉</div>
+                <h2 className={styles.victoryTitle}>AMAZING!</h2>
+                <p className={styles.victorySubtitle}>You finished all {totalQuestions} states!</p>
+                <div className={styles.finalScore}>
+                  <span className={styles.finalScoreNum}>{score.correct}</span>
+                  <span className={styles.finalScoreDen}> / {totalQuestions}</span>
+                  <p className={styles.finalScoreLabel}>
+                    {score.correct === totalQuestions ? "Perfect score! 🏆" : score.correct >= totalQuestions * 0.8 ? "Excellent! 🌟" : score.correct >= totalQuestions * 0.6 ? "Great job! 👏" : "Keep practicing! 💪"}
+                  </p>
+                </div>
+                <button className={styles.restartBtn} onClick={() => { setCurrentQ(null); setQuizDone(false); startQuiz(); }}>🔄 Play Again</button>
+                <button className={styles.studyModeBtn} onClick={() => switchMode("study")}>📖 Study Mode</button>
               </div>
-              <button className={styles.restartBtn} onClick={() => { setCurrentQ(null); setQuizDone(false); startQuiz(); }}>🔄 Play Again</button>
-              <button className={styles.studyModeBtn} onClick={() => switchMode("study")}>📖 Study Mode</button>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </main>
 
 
@@ -550,7 +559,7 @@ export default function StatesGame() {
             </div>
             <button
               className={styles.modalSaveBtn}
-              onClick={() => { setShowConfig(false); if (mode === "quiz") { setCurrentQ(null); setQuizDone(false); } }}
+              onClick={() => setShowConfig(false)}
             >
               SAVE & CLOSE
             </button>
