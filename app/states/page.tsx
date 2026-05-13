@@ -63,9 +63,17 @@ export default function StatesGame() {
   });
 
   const [mode, setMode] = useState<"study" | "quiz">("study");
+  const [difficulty, setDifficulty] = useState<1 | 2 | 3 | 4 | 5>(1);
+  const [soundOn, setSoundOn] = useState(true);
+  const [timerOn, setTimerOn] = useState(false);
+  const [showConfig, setShowConfig] = useState(false);
   const [selectedState, setSelectedState] = useState<StateData | null>(null);
   const [hoveredState, setHoveredState] = useState<string | null>(null);
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
+
+  // Filtered states based on difficulty (cumulative: level includes all easier levels)
+  const quizStates = STATES.filter((s) => s.difficulty <= difficulty);
+  const totalQuestions = quizStates.length;
 
   // Quiz state
   const [quizQueue, setQuizQueue] = useState<StateData[]>([]);
@@ -78,6 +86,13 @@ export default function StatesGame() {
   const [correctAnswer, setCorrectAnswer] = useState<string | null>(null);
   const [quizDone, setQuizDone] = useState(false);
   const [isAnswering, setIsAnswering] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<number | null>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const getTimerSeconds = useCallback(() => {
+    const timers: Record<number, number> = { 1: 30, 2: 20, 3: 10, 4: 5, 5: 3 };
+    return timers[difficulty] ?? 10;
+  }, [difficulty]);
 
   const audioCtxRef = useRef<AudioContext | null>(null);
 
@@ -133,9 +148,31 @@ export default function StatesGame() {
     }
   };
 
+  const stopTimer = useCallback(() => {
+    if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
+    setTimeLeft(null);
+  }, []);
+
+  const startTimer = useCallback(() => {
+    stopTimer();
+    if (!timerOn) return;
+    const secs = getTimerSeconds();
+    setTimeLeft(secs);
+    timerRef.current = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev === null || prev <= 1) {
+          if (timerRef.current) clearInterval(timerRef.current);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  }, [timerOn, getTimerSeconds, stopTimer]);
+
   const loadQuestion = useCallback((queue: StateData[]) => {
     if (queue.length === 0) {
       setQuizDone(true);
+      stopTimer();
       confetti({ particleCount: 200, spread: 160, origin: { x: 0.5, y: 0.3 } });
       return;
     }
@@ -144,9 +181,9 @@ export default function StatesGame() {
     setCurrentQ(next);
     const type: "nameIt" | "findIt" = Math.random() < 0.5 ? "nameIt" : "findIt";
     setQuizType(type);
-    setOptions(getOptions(next, STATES));
+    setOptions(getOptions(next, quizStates));
     setQuizHighlight(type === "nameIt" ? next.id : null);
-  }, []);
+  }, [quizStates, stopTimer]);
 
   const startQuiz = useCallback(() => {
     setScore({ correct: 0, total: 0 });
@@ -155,8 +192,8 @@ export default function StatesGame() {
     setCorrectAnswer(null);
     setQuizHighlight(null);
     setIsAnswering(false);
-    loadQuestion(shuffle(STATES));
-  }, [loadQuestion]);
+    loadQuestion(shuffle(quizStates));
+  }, [loadQuestion, quizStates]);
 
   useEffect(() => {
     if (mode === "quiz" && !currentQ && !quizDone) startQuiz();
@@ -175,16 +212,32 @@ export default function StatesGame() {
     if (chosen.id === currentQ.id) {
       setCorrectAnswer(chosen.id);
       setScore((s) => ({ correct: s.correct + 1, total: s.total + 1 }));
-      playSuccess();
+      if (soundOn) playSuccess();
       confetti({ particleCount: 80, spread: 60, origin: { x: 0.85, y: 0.5 } });
       setTimeout(() => { advanceQuiz(); setIsAnswering(false); }, 1500);
     } else {
       setWrongAnswer(chosen.id);
       setScore((s) => ({ ...s, total: s.total + 1 }));
-      playWrong();
+      if (soundOn) playWrong();
       setTimeout(() => { advanceQuiz(); setIsAnswering(false); }, 1200);
     }
-  }, [isAnswering, currentQ, playSuccess, playWrong, advanceQuiz]);
+  }, [isAnswering, currentQ, playSuccess, playWrong, advanceQuiz, soundOn]);
+
+  // Start timer when a new question loads
+  useEffect(() => {
+    if (mode === "quiz" && currentQ && !quizDone && !isAnswering) startTimer();
+    return () => stopTimer();
+  }, [currentQ, mode, quizDone, isAnswering, startTimer, stopTimer]);
+
+  // Handle timeout - auto-skip as wrong
+  useEffect(() => {
+    if (timeLeft === 0 && !isAnswering && currentQ) {
+      setIsAnswering(true);
+      setScore((s) => ({ ...s, total: s.total + 1 }));
+      if (soundOn) playWrong();
+      setTimeout(() => { advanceQuiz(); setIsAnswering(false); }, 1000);
+    }
+  }, [timeLeft, isAnswering, currentQ, soundOn, playWrong, advanceQuiz]);
 
   const handleStateClick = useCallback((state: StateData) => {
     if (mode === "study") {
@@ -200,7 +253,6 @@ export default function StatesGame() {
     if (newMode === "quiz") { setCurrentQ(null); setQuizDone(false); }
   };
 
-  const totalQuestions = 50;
   const progressPct = Math.round((score.total / totalQuestions) * 100);
 
   // Build fipsCode → StateData lookup
@@ -222,9 +274,14 @@ export default function StatesGame() {
       {/* Header */}
       <header className={styles.header}>
         <h1 className={styles.title}>States</h1>
-        <div className={styles.modeToggle}>
-          <button className={`${styles.modeBtn} ${mode === "study" ? styles.modeBtnActive : ""}`} onClick={() => switchMode("study")}>📖 Study</button>
-          <button className={`${styles.modeBtn} ${mode === "quiz" ? styles.modeBtnActive : ""}`} onClick={() => switchMode("quiz")}>🎯 Quiz</button>
+        <div className={styles.headerRight}>
+          <button className={styles.configBtn} onClick={() => setShowConfig(true)}>
+            <span className={styles.configIcon}>⚙</span>
+          </button>
+          <div className={styles.modeToggle}>
+            <button className={`${styles.modeBtn} ${mode === "study" ? styles.modeBtnActive : ""}`} onClick={() => switchMode("study")}>📖 Study</button>
+            <button className={`${styles.modeBtn} ${mode === "quiz" ? styles.modeBtnActive : ""}`} onClick={() => switchMode("quiz")}>🎯 Quiz</button>
+          </div>
         </div>
       </header>
 
@@ -283,8 +340,8 @@ export default function StatesGame() {
                 }
               </Geographies>
 
-              {/* State abbreviation labels */}
-              {STATES.map((state) => {
+              {/* State abbreviation labels - hidden at difficulty 3+ during quiz */}
+              {!(mode === "quiz" && difficulty >= 3) && STATES.map((state) => {
                 // Skip tiny states that would be too cluttered (RI, DE, CT, NJ, MD, MA, VT, NH)
                 const skipLabel = ["rhode-island", "delaware", "connecticut", "new-jersey", "maryland", "massachusetts", "vermont", "new-hampshire", "district-of-columbia"].includes(state.id);
                 if (skipLabel) return null;
@@ -302,6 +359,21 @@ export default function StatesGame() {
                 );
               })}
             </ComposableMap>
+            {mode === "study" && (
+              <div className={styles.legendOverlay}>
+                {LEGEND_ORDER.map((region) => (
+                  <div
+                    key={region}
+                    className={`${styles.legendItem} ${hoveredRegion === region ? styles.legendItemActive : ""}`}
+                    onMouseEnter={() => setHoveredRegion(region)}
+                    onMouseLeave={() => setHoveredRegion(null)}
+                  >
+                    <span className={styles.legendDot} style={{ background: REGION_COLORS[region] }} />
+                    <span className={styles.legendLabel}>{region}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Study info panel */}
@@ -375,7 +447,14 @@ export default function StatesGame() {
           {mode === "quiz" && !quizDone && currentQ && (
             <div className={styles.quizSidebar}>
               <div className={styles.quizHeader}>
-                <div className={styles.scoreDisplay}>⭐ {score.correct} / {totalQuestions}</div>
+                <div className={styles.quizHeaderRow}>
+                  <div className={styles.scoreDisplay}>⭐ {score.correct} / {totalQuestions}</div>
+                  {timerOn && timeLeft !== null && (
+                    <div className={`${styles.timerDisplay} ${timeLeft <= 3 ? styles.timerCritical : ""}`}>
+                      {timeLeft}s
+                    </div>
+                  )}
+                </div>
                 <div className={styles.progressBar}><div className={styles.progressFill} style={{ width: `${progressPct}%` }} /></div>
                 <div className={styles.progressLabel}>{score.total} answered</div>
               </div>
@@ -417,7 +496,7 @@ export default function StatesGame() {
                 <span className={styles.finalScoreNum}>{score.correct}</span>
                 <span className={styles.finalScoreDen}> / {totalQuestions}</span>
                 <p className={styles.finalScoreLabel}>
-                  {score.correct === totalQuestions ? "Perfect score! 🏆" : score.correct >= 40 ? "Excellent! 🌟" : score.correct >= 30 ? "Great job! 👏" : "Keep practicing! 💪"}
+                  {score.correct === totalQuestions ? "Perfect score! 🏆" : score.correct >= totalQuestions * 0.8 ? "Excellent! 🌟" : score.correct >= totalQuestions * 0.6 ? "Great job! 👏" : "Keep practicing! 💪"}
                 </p>
               </div>
               <button className={styles.restartBtn} onClick={() => { setCurrentQ(null); setQuizDone(false); startQuiz(); }}>🔄 Play Again</button>
@@ -427,20 +506,55 @@ export default function StatesGame() {
         )}
       </main>
 
-      {mode === "study" && (
-        <footer className={styles.legend}>
-          {LEGEND_ORDER.map((region) => (
-            <div
-              key={region}
-              className={`${styles.legendItem} ${hoveredRegion === region ? styles.legendItemActive : ""}`}
-              onMouseEnter={() => setHoveredRegion(region)}
-              onMouseLeave={() => setHoveredRegion(null)}
-            >
-              <span className={styles.legendDot} style={{ background: REGION_COLORS[region] }} />
-              <span className={styles.legendLabel}>{region}</span>
+
+      {/* Settings modal */}
+      {showConfig && (
+        <div className={styles.modalOverlay} onClick={() => setShowConfig(false)}>
+          <div className={styles.modalCard} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.modalHeader}>
+              <h2 className={styles.modalTitle}>SETTINGS</h2>
+              <button className={styles.modalClose} onClick={() => setShowConfig(false)}>✕</button>
             </div>
-          ))}
-        </footer>
+            <div className={styles.modalDivider} />
+            <div className={styles.modalSection}>
+              <div className={styles.modalSectionTitle}>DIFFICULTY</div>
+              <div className={styles.modalTiles}>
+                {([1, 2, 3, 4, 5] as const).map((level) => (
+                  <button
+                    key={level}
+                    className={`${styles.modalTile} ${difficulty === level ? styles.modalTileActive : ""}`}
+                    onClick={() => setDifficulty(level)}
+                  >
+                    {level}⭐
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className={styles.modalSection}>
+              <div className={styles.modalSectionTitle}>OPTIONS</div>
+              <div className={styles.modalToggles}>
+                <button
+                  className={`${styles.modalToggle} ${soundOn ? styles.modalToggleActive : ""}`}
+                  onClick={() => setSoundOn(!soundOn)}
+                >
+                  {soundOn ? "🔊" : "🔇"} Sound
+                </button>
+                <button
+                  className={`${styles.modalToggle} ${timerOn ? styles.modalToggleActive : ""}`}
+                  onClick={() => setTimerOn(!timerOn)}
+                >
+                  {timerOn ? "⏱️" : "⏱️"} Timer {timerOn && <span className={styles.timerDetail}>({getTimerSeconds()}s)</span>}
+                </button>
+              </div>
+            </div>
+            <button
+              className={styles.modalSaveBtn}
+              onClick={() => { setShowConfig(false); if (mode === "quiz") { setCurrentQ(null); setQuizDone(false); } }}
+            >
+              SAVE & CLOSE
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

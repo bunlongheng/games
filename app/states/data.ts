@@ -16,7 +16,15 @@ export interface StateData {
   fipsCode: string;   // FIPS numeric code as string, e.g. "01"
   centerLon: number;  // geographic center longitude
   centerLat: number;  // geographic center latitude
+  difficulty: 1 | 2 | 3 | 4 | 5; // 1=easiest, 5=hardest
 }
+
+// Difficulty assignments:
+// 1 - Iconic states everyone knows (CA, TX, FL, NY, AK, HI)
+// 2 - Large/well-known states (PA, IL, OH, GA, MI, WA, CO, AZ, VA, NC)
+// 3 - Mid-recognition states (OR, NV, LA, TN, MN, WI, MO, MA, NJ, MD, SC, AL, KY, OK, IN)
+// 4 - Harder states (AR, KS, NE, IA, MS, NM, UT, CT, ME, MT, WV, ID)
+// 5 - Most confusing states (ND, SD, WY, VT, NH, RI, DE)
 
 export const STATES: StateData[] = [
   {
@@ -41,6 +49,7 @@ export const STATES: StateData[] = [
     fipsCode: "01",
     centerLon: -86.8,
     centerLat: 32.8,
+    difficulty: 3,
   },
   {
     id: "alaska",
@@ -64,6 +73,7 @@ export const STATES: StateData[] = [
     fipsCode: "02",
     centerLon: -153.4,
     centerLat: 64.2,
+    difficulty: 1,
   },
   {
     id: "arizona",
@@ -87,6 +97,7 @@ export const STATES: StateData[] = [
     fipsCode: "04",
     centerLon: -111.1,
     centerLat: 34.3,
+    difficulty: 2,
   },
   {
     id: "arkansas",
@@ -110,6 +121,7 @@ export const STATES: StateData[] = [
     fipsCode: "05",
     centerLon: -92.2,
     centerLat: 34.8,
+    difficulty: 4,
   },
   {
     id: "california",
@@ -133,6 +145,7 @@ export const STATES: StateData[] = [
     fipsCode: "06",
     centerLon: -119.5,
     centerLat: 37.2,
+    difficulty: 1,
   },
   {
     id: "colorado",
@@ -156,6 +169,7 @@ export const STATES: StateData[] = [
     fipsCode: "08",
     centerLon: -105.5,
     centerLat: 39.0,
+    difficulty: 2,
   },
   {
     id: "connecticut",
@@ -179,6 +193,7 @@ export const STATES: StateData[] = [
     fipsCode: "09",
     centerLon: -72.7,
     centerLat: 41.6,
+    difficulty: 4,
   },
   {
     id: "delaware",
@@ -202,6 +217,7 @@ export const STATES: StateData[] = [
     fipsCode: "10",
     centerLon: -75.5,
     centerLat: 38.9,
+    difficulty: 5,
   },
   {
     id: "florida",
@@ -225,6 +241,7 @@ export const STATES: StateData[] = [
     fipsCode: "12",
     centerLon: -81.5,
     centerLat: 28.5,
+    difficulty: 1,
   },
   {
     id: "georgia",
@@ -248,6 +265,7 @@ export const STATES: StateData[] = [
     fipsCode: "13",
     centerLon: -83.4,
     centerLat: 32.7,
+    difficulty: 1,
   },
   {
     id: "hawaii",
@@ -271,6 +289,7 @@ export const STATES: StateData[] = [
     fipsCode: "15",
     centerLon: -157.0,
     centerLat: 20.9,
+    difficulty: 1,
   },
   {
     id: "idaho",
@@ -294,6 +313,7 @@ export const STATES: StateData[] = [
     fipsCode: "16",
     centerLon: -114.5,
     centerLat: 44.3,
+    difficulty: 5,
   },
   {
     id: "illinois",
@@ -317,6 +337,7 @@ export const STATES: StateData[] = [
     fipsCode: "17",
     centerLon: -89.2,
     centerLat: 40.0,
+    difficulty: 1,
   },
   {
     id: "indiana",
@@ -340,6 +361,7 @@ export const STATES: StateData[] = [
     fipsCode: "18",
     centerLon: -86.1,
     centerLat: 39.8,
+    difficulty: 3,
   },
   {
     id: "iowa",
@@ -363,6 +385,7 @@ export const STATES: StateData[] = [
     fipsCode: "19",
     centerLon: -93.5,
     centerLat: 42.0,
+    difficulty: 4,
   },
   {
     id: "kansas",
@@ -386,6 +409,7 @@ export const STATES: StateData[] = [
     fipsCode: "20",
     centerLon: -98.4,
     centerLat: 38.7,
+    difficulty: 5,
   },
   {
     id: "kentucky",
@@ -409,6 +433,7 @@ export const STATES: StateData[] = [
     fipsCode: "21",
     centerLon: -84.3,
     centerLat: 37.5,
+    difficulty: 3,
   },
   {
     id: "louisiana",
@@ -432,6 +457,7 @@ export const STATES: StateData[] = [
     fipsCode: "22",
     centerLon: -91.8,
     centerLat: 31.0,
+    difficulty: 3,
   },
   {
     id: "maine",
@@ -455,6 +481,7 @@ export const STATES: StateData[] = [
     fipsCode: "23",
     centerLon: -69.2,
     centerLat: 45.4,
+    difficulty: 4,
   },
   {
     id: "maryland",
@@ -478,6 +505,7 @@ export const STATES: StateData[] = [
     fipsCode: "24",
     centerLon: -76.9,
     centerLat: 39.0,
+    difficulty: 2,
   },
   {
     id: "massachusetts",
@@ -501,6 +529,7 @@ export const STATES: StateData[] = [
     fipsCode: "25",
     centerLon: -71.5,
     centerLat: 42.2,
+    difficulty: 2,
   },
   {
     id: "michigan",
@@ -524,6 +553,7 @@ export const STATES: StateData[] = [
     fipsCode: "26",
     centerLon: -85.5,
     centerLat: 44.3,
+    difficulty: 2,
   },
   {
     id: "minnesota",
@@ -547,6 +577,7 @@ export const STATES: StateData[] = [
     fipsCode: "27",
     centerLon: -94.3,
     centerLat: 46.3,
+    difficulty: 3,
   },
   {
     id: "mississippi",
@@ -570,6 +601,7 @@ export const STATES: StateData[] = [
     fipsCode: "28",
     centerLon: -89.7,
     centerLat: 32.7,
+    difficulty: 4,
   },
   {
     id: "missouri",
@@ -593,6 +625,7 @@ export const STATES: StateData[] = [
     fipsCode: "29",
     centerLon: -92.5,
     centerLat: 38.3,
+    difficulty: 3,
   },
   {
     id: "montana",
@@ -616,6 +649,7 @@ export const STATES: StateData[] = [
     fipsCode: "30",
     centerLon: -110.4,
     centerLat: 46.9,
+    difficulty: 4,
   },
   {
     id: "nebraska",
@@ -639,6 +673,7 @@ export const STATES: StateData[] = [
     fipsCode: "31",
     centerLon: -100.0,
     centerLat: 41.5,
+    difficulty: 5,
   },
   {
     id: "nevada",
@@ -662,6 +697,7 @@ export const STATES: StateData[] = [
     fipsCode: "32",
     centerLon: -116.8,
     centerLat: 39.3,
+    difficulty: 3,
   },
   {
     id: "new-hampshire",
@@ -685,6 +721,7 @@ export const STATES: StateData[] = [
     fipsCode: "33",
     centerLon: -71.6,
     centerLat: 43.7,
+    difficulty: 5,
   },
   {
     id: "new-jersey",
@@ -708,6 +745,7 @@ export const STATES: StateData[] = [
     fipsCode: "34",
     centerLon: -74.5,
     centerLat: 40.0,
+    difficulty: 2,
   },
   {
     id: "new-mexico",
@@ -731,6 +769,7 @@ export const STATES: StateData[] = [
     fipsCode: "35",
     centerLon: -106.2,
     centerLat: 34.3,
+    difficulty: 4,
   },
   {
     id: "new-york",
@@ -754,6 +793,7 @@ export const STATES: StateData[] = [
     fipsCode: "36",
     centerLon: -76.0,
     centerLat: 43.0,
+    difficulty: 1,
   },
   {
     id: "north-carolina",
@@ -777,6 +817,7 @@ export const STATES: StateData[] = [
     fipsCode: "37",
     centerLon: -79.4,
     centerLat: 35.6,
+    difficulty: 2,
   },
   {
     id: "north-dakota",
@@ -800,6 +841,7 @@ export const STATES: StateData[] = [
     fipsCode: "38",
     centerLon: -100.3,
     centerLat: 47.5,
+    difficulty: 5,
   },
   {
     id: "ohio",
@@ -823,6 +865,7 @@ export const STATES: StateData[] = [
     fipsCode: "39",
     centerLon: -82.8,
     centerLat: 40.4,
+    difficulty: 1,
   },
   {
     id: "oklahoma",
@@ -846,6 +889,7 @@ export const STATES: StateData[] = [
     fipsCode: "40",
     centerLon: -97.5,
     centerLat: 35.5,
+    difficulty: 4,
   },
   {
     id: "oregon",
@@ -869,6 +913,7 @@ export const STATES: StateData[] = [
     fipsCode: "41",
     centerLon: -120.5,
     centerLat: 44.0,
+    difficulty: 2,
   },
   {
     id: "pennsylvania",
@@ -892,6 +937,7 @@ export const STATES: StateData[] = [
     fipsCode: "42",
     centerLon: -77.2,
     centerLat: 41.0,
+    difficulty: 1,
   },
   {
     id: "rhode-island",
@@ -915,6 +961,7 @@ export const STATES: StateData[] = [
     fipsCode: "44",
     centerLon: -71.5,
     centerLat: 41.6,
+    difficulty: 5,
   },
   {
     id: "south-carolina",
@@ -938,6 +985,7 @@ export const STATES: StateData[] = [
     fipsCode: "45",
     centerLon: -81.0,
     centerLat: 34.0,
+    difficulty: 3,
   },
   {
     id: "south-dakota",
@@ -961,6 +1009,7 @@ export const STATES: StateData[] = [
     fipsCode: "46",
     centerLon: -100.2,
     centerLat: 44.4,
+    difficulty: 5,
   },
   {
     id: "tennessee",
@@ -984,6 +1033,7 @@ export const STATES: StateData[] = [
     fipsCode: "47",
     centerLon: -86.7,
     centerLat: 35.9,
+    difficulty: 3,
   },
   {
     id: "texas",
@@ -1007,6 +1057,7 @@ export const STATES: StateData[] = [
     fipsCode: "48",
     centerLon: -99.0,
     centerLat: 31.5,
+    difficulty: 1,
   },
   {
     id: "utah",
@@ -1030,6 +1081,7 @@ export const STATES: StateData[] = [
     fipsCode: "49",
     centerLon: -111.1,
     centerLat: 39.5,
+    difficulty: 4,
   },
   {
     id: "vermont",
@@ -1053,6 +1105,7 @@ export const STATES: StateData[] = [
     fipsCode: "50",
     centerLon: -72.8,
     centerLat: 44.3,
+    difficulty: 5,
   },
   {
     id: "virginia",
@@ -1076,6 +1129,7 @@ export const STATES: StateData[] = [
     fipsCode: "51",
     centerLon: -78.5,
     centerLat: 37.5,
+    difficulty: 2,
   },
   {
     id: "washington",
@@ -1099,6 +1153,7 @@ export const STATES: StateData[] = [
     fipsCode: "53",
     centerLon: -120.5,
     centerLat: 47.5,
+    difficulty: 2,
   },
   {
     id: "west-virginia",
@@ -1122,6 +1177,7 @@ export const STATES: StateData[] = [
     fipsCode: "54",
     centerLon: -80.5,
     centerLat: 38.6,
+    difficulty: 4,
   },
   {
     id: "wisconsin",
@@ -1145,6 +1201,7 @@ export const STATES: StateData[] = [
     fipsCode: "55",
     centerLon: -90.2,
     centerLat: 44.5,
+    difficulty: 3,
   },
   {
     id: "wyoming",
@@ -1168,5 +1225,6 @@ export const STATES: StateData[] = [
     fipsCode: "56",
     centerLon: -107.6,
     centerLat: 43.0,
+    difficulty: 5,
   },
 ];
