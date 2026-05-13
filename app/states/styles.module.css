@@ -55,14 +55,14 @@
 .configBtn {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  gap: 5px;
+  padding: 8px 16px;
+  border-radius: 50px;
   border: 2px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -441,8 +441,7 @@
 
 /* -------- Selected (study) -------- */
 .selected {
-  fill: #ffffff !important;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) brightness(1.3);
   stroke: #fff !important;
   stroke-width: 2.5 !important;
 }
@@ -534,9 +533,8 @@
   padding: 20px 18px 24px;
   overflow-y: auto;
   animation: slideIn 0.3s ease;
-  outline: 2px solid var(--region-color-inverted, rgba(255,255,255,0.2));
+  outline: 2px solid var(--region-color, rgba(255,255,255,0.2));
   outline-offset: -2px;
-  box-shadow: 0 0 30px color-mix(in srgb, var(--region-color, #888) 20%, transparent);
 }
 
 .closeBtn {
@@ -945,6 +943,16 @@
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+.legendItemSelected {
+  background: color-mix(in srgb, var(--legend-glow, #888) 20%, transparent);
+  border-color: var(--legend-glow, #888);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--legend-glow, #888) 50%, transparent);
+}
+
+.legendItemSelected .legendLabel {
+  color: #fff;
+}
+
 .legendDot {
   width: 9px;
   height: 9px;
@@ -1041,9 +1049,8 @@
   }
 
   .configBtn {
-    width: 30px;
-    height: 30px;
-    font-size: 0.9rem;
+    padding: 5px 10px;
+    font-size: 0.75rem;
   }
 
   .modalCard {

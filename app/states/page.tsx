@@ -263,7 +263,7 @@ export default function StatesGame() {
     if (isWrong) return "#ef4444";
     if (isHighlight) return "#fbbf24";
     const base = REGION_COLORS[stateData?.region ?? ""] ?? "#888";
-    if (isSelected) return "#ffffff";
+    if (isSelected) return lighten(base, 60);
     if (isHovered) return lighten(base, 45);
     if (isRegionHovered) return lighten(base, 30);
     return base;
@@ -275,13 +275,13 @@ export default function StatesGame() {
       <header className={styles.header}>
         <h1 className={styles.title}>States</h1>
         <div className={styles.headerRight}>
-          <button className={styles.configBtn} onClick={() => setShowConfig(true)}>
-            <span className={styles.configIcon}>⚙</span>
-          </button>
           <div className={styles.modeToggle}>
             <button className={`${styles.modeBtn} ${mode === "study" ? styles.modeBtnActive : ""}`} onClick={() => switchMode("study")}>📖 Study</button>
             <button className={`${styles.modeBtn} ${mode === "quiz" ? styles.modeBtnActive : ""}`} onClick={() => switchMode("quiz")}>🎯 Quiz</button>
           </div>
+          <button className={styles.configBtn} onClick={() => setShowConfig(true)}>
+            <span className={styles.configIcon}>⚙</span> Settings
+          </button>
         </div>
       </header>
 
@@ -364,7 +364,8 @@ export default function StatesGame() {
                 {LEGEND_ORDER.map((region) => (
                   <div
                     key={region}
-                    className={`${styles.legendItem} ${hoveredRegion === region ? styles.legendItemActive : ""}`}
+                    className={`${styles.legendItem} ${hoveredRegion === region ? styles.legendItemActive : ""} ${selectedState?.region === region ? styles.legendItemSelected : ""}`}
+                    style={selectedState?.region === region ? { "--legend-glow": REGION_COLORS[region] } as React.CSSProperties : undefined}
                     onMouseEnter={() => setHoveredRegion(region)}
                     onMouseLeave={() => setHoveredRegion(null)}
                   >
