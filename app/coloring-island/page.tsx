@@ -40,10 +40,10 @@ export default function ColoringIsland() {
     const clearCanvas = () => setCanvasState({});
 
     return (
-        <div className="h-screen w-full bg-[#87CEEB] flex flex-col p-6 font-sans select-none overflow-hidden" style={{ cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'><text y='30'>🪣</text></svg>"), pointer` }}>
+        <div className="h-screen w-full bg-[#87CEEB] flex flex-col p-3 sm:p-6 font-sans select-none overflow-hidden" style={{ cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:30px'><text y='30'>🪣</text></svg>"), pointer` }}>
             {/* TOP NAV BAR */}
-            <div className="flex justify-between items-center mb-8 px-4">
-                <h1 className="text-5xl font-black text-white drop-shadow-md italic">
+            <div className="flex justify-between items-center mb-4 sm:mb-8 px-1 sm:px-4">
+                <h1 className="text-3xl sm:text-5xl font-black text-white drop-shadow-md italic">
                     Coloring <span className="text-orange-400">Island</span>
                 </h1>
                 <div className="flex gap-4">
@@ -54,9 +54,9 @@ export default function ColoringIsland() {
                 </div>
             </div>
 
-            <div className="flex flex-1 gap-8 px-4">
+            <div className="flex flex-1 min-h-0 gap-3 sm:gap-8 px-0 sm:px-4">
                 {/* FRUIT SELECTION */}
-                <div className="w-28 bg-white/90 rounded-[40px] border-4 border-blue-300 p-4 flex flex-col gap-6 shadow-xl">
+                <div className="w-20 sm:w-28 bg-white/90 rounded-[40px] border-4 border-blue-300 p-2 sm:p-4 flex flex-col gap-3 sm:gap-6 shadow-xl">
                     {FRUITS.map((fruit, idx) => (
                         <button
                             key={fruit.name}
@@ -71,7 +71,7 @@ export default function ColoringIsland() {
                 </div>
 
                 {/* CANVAS AREA */}
-                <div className="flex-1 bg-white rounded-[60px] border-[12px] border-white shadow-2xl relative flex items-center justify-center p-12">
+                <div className="flex-1 bg-white rounded-[60px] border-[12px] border-white shadow-2xl relative flex items-center justify-center p-3 sm:p-12">
                     <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: "radial-gradient(#000 2px, transparent 2px)", backgroundSize: "30px 30px" }} />
 
                     <svg viewBox="0 0 100 100" className="w-full h-full max-w-2xl drop-shadow-xl">
@@ -84,9 +84,9 @@ export default function ColoringIsland() {
             </div>
 
             {/* COLOR TRAY */}
-            <div className="mt-10 bg-white/60 backdrop-blur-md rounded-full border-4 border-white p-6 self-center flex gap-6 shadow-2xl">
+            <div className="mt-4 sm:mt-10 max-w-full bg-white/60 backdrop-blur-md rounded-[40px] border-4 border-white p-3 md:p-6 self-center flex flex-wrap justify-center gap-3 md:gap-6 shadow-2xl">
                 {COLORS.map((c) => (
-                    <button key={c} onClick={() => setBrushColor(c)} className={`w-14 h-14 rounded-full border-4 transition-all ${brushColor === c ? "border-white scale-125 shadow-xl rotate-12" : "border-transparent"}`} style={{ backgroundColor: c }} />
+                    <button key={c} onClick={() => setBrushColor(c)} className={`w-10 h-10 sm:w-14 sm:h-14 rounded-full border-4 transition-all ${brushColor === c ? "border-white scale-125 shadow-xl rotate-12" : "border-transparent"}`} style={{ backgroundColor: c }} />
                 ))}
             </div>
         </div>
